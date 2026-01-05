@@ -19,5 +19,7 @@ format:
 execute:
   freeze: auto
 
-
+comments:
+  giscus: 
+    repo: maykongpedro/maykon_pedro_quarto_blog
 
