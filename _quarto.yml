@@ -12,14 +12,13 @@ website:
 format:
   html:
     theme:
-      - Minty
-      - brand
-    css: styles.css
+      - minty
+      - styles.scss
 
 execute:
   freeze: auto
 
 comments:
   giscus: 
-    repo: maykongpedro/maykon_pedro_quarto_blog
+    repo: maykongpedro/maykon_pedro
 
