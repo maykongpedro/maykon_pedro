@@ -1,0 +1,15 @@
+{
+  "hash": "ee8004f52e18436765a258463b2fd0af",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Maykon Pedro\n# lang: en\nabout:\n  template: trestles\n  image: \"content/images/about_picture.jpeg\"\n  image-width: \"250px;\"\n  # image-shape: round\n  # image-width: 25em\n  links:\n    - icon: github\n      text: Github\n      href: https://github.com/maykongpedro\n    - icon: linkedin\n      text: LinkedIn\n      href: https://www.linkedin.com/in/maykon-gabriel-5ab009170\nexecute:\n  echo: false\ncomments: false\n---\n\n\n\n\n\n\n\n::: column-body-outset\n## Sobre mim\n\nTexto texto\n\ntexto texto\n\n## Educação\n\n-   **aaa**\n-   **bbb**\n-   ccc\n\n## Experiências profissionais\n\n-   klabin\n\n-   tree\n\n-   labs\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
