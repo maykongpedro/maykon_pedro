@@ -12,7 +12,7 @@ website:
 format:
   html:
     theme:
-      - Flatly
+      - Minty
       - brand
     css: styles.css
 

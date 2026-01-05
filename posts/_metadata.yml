@@ -6,3 +6,10 @@ freeze: true
 
 # Enable banner style title blocks
 title-block-banner: true
+
+format:
+  html: 
+    toc: true
+    toc-title: Contents
+    toc-location: left
+    number-sections: true
