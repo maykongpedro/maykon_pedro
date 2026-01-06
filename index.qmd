@@ -3,10 +3,10 @@ title: Maykon Pedro
 # lang: en
 about:
   template: trestles
-  image: "content/images/about_picture.jpeg"
-  image-width: "250px;"
-  # image-shape: round
-  # image-width: 25em
+  image: "content/images/about_picture.jpg"
+  # image-width: "250px;"
+  image-shape: round
+  image-width: 18em
   links:
     - icon: github
       text: Github
@@ -14,6 +14,9 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/maykon-gabriel-5ab009170
+    - icon: envelope
+      text: Email
+      href: mailto:maykonglaffite@gmail.com
 execute:
   echo: false
 comments: false
