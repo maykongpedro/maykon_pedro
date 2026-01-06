@@ -298,7 +298,7 @@ def receita_total(m):  # <2>
 
 ### Declarar restrições
 
-Reiterando o tópico de variávies de decisão (@sec-variaveis), especificamente a **Opção 2 - Com Limites**, caso seguissemos com uma declaração das variáveis usando o argumento `bounds`, não seria necessário a criação das restrições de área máxima, pois as variáveis já possuíriam um limite interno em suas próprias declarações.
+Reiterando o tópico de variávies de decisão (@sec-variaveis), especificamente a **Opção 2 - Com Limites**, caso seguíssemos com uma declaração das variáveis usando o argumento `bounds`, não seria necessário a criação das restrições de área máxima, pois as variáveis já possuíriam um limite interno em suas próprias declarações.
 
 #### Área máxima para a floresta de pinus
 
@@ -456,7 +456,7 @@ print(f"Área manejada de Nativa (x2) = {modelo.x2_area_nativa.value:.2f} hectar
 
 ## Conclusão
 
-Esse é um post com objetivo didático, então me permiti algumas repetições funcionais. A ideia é publicar novos textos com variações do modelo, estabelecendo algumas práticas de escabilidade e resolvendo outros exercícios didáticos da apostila utilizada como referência. Nesse processo, meu desejo é estabelcer parcerias na escrita e na produção dos textos com grandes amigos e colegas.
+Esse é um post com objetivo didático, então me permiti algumas repetições funcionais. A ideia é publicar novos textos com variações do modelo, estabelecendo algumas práticas de escabilidade e resolvendo outros exercícios didáticos da apostila utilizada como referência. Nesse processo, meu desejo é estabelecer parcerias na escrita e na produção dos textos com amigos e colegas.
 
 Fico à disposição para sugestões de melhorias, afinal, sempre vai haver alguma forma diferente de resolver o mesmo problema. A diversão está contida justamente na forma de resolver, e não necessariamente no resultado final (que será o mesmo).
 
@@ -466,7 +466,7 @@ Até a próxima.
 
 ## Referências
 
--   [Apostila - Programação Linerar para Fins Florestais (Antiga)](https://github.com/maykongpedro/maykon_pedro/blob/main/posts/20260105_o_problema_do_poeta/docs/Apostila_Programa%C3%A7%C3%A3o_Linear_Julio_Arce.pdf)
+-   [Apostila - Programação Linear para Fins Florestais (Antiga)](https://github.com/maykongpedro/maykon_pedro/blob/main/posts/20260105_o_problema_do_poeta/docs/Apostila_Programa%C3%A7%C3%A3o_Linear_Julio_Arce.pdf)
 -   [Hands-On Mathematical Optimization with Python](https://mobook.github.io/MO-book/intro.html)
 -   [PEP 318 – Decorators for Functions and Methods](https://peps.python.org/pep-0318/)
 -   [Docs Python - 4.8. Defining Functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions)
