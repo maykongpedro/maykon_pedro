@@ -20,9 +20,9 @@ Esse texto não tem como pretensão ensinar uma linguagem de programação do ze
 
 A ideia surgiu após a constatação de que atualmente não temos nem de perto a quantidade de material sobre Pyomo em Português se compararmos com o idioma dominante na ciência: Inglês. Considerando que pra muitos essa pode ser uma barreira inicial que só tornará a experiência mais difícil, espero que esse material possa agregar na jornada de aprendizado de quem busca entender sobre o assunto. Além disso, o desafio de escrever com minhas palavras na era da inteligência artificial me pareceu extremamente interessante.
 
-Pensando em conectar com minha área de atuação, o problema aqui exposto foi extraído da excelente apostila **Programação Linear para Fins Florestais**, do professor Julio Eduardo Arce (UFPR). O capítulo que descreve o problema do Poeta pode ser acessado no seguinte link: [capítulo](https://github.com/maykongpedro/PO_O_Problema_Do_Poeta/blob/main/docs/Apostila_PO_Julio_Arce_Cap1_O_Problema_do_Poeta.pdf). Recomendo a leitura, principalmente para aqueles que não tem familiaridade com o tema. Nesse documento o problema será resolvido de maneira simplificada, alocando cada valor e restrição diretamente no código, sem pensar em escalonamento dos dados ou formulação genérica, visando descomplicar alguns conceitos.
+Pensando em conectar com minha área de atuação, o problema aqui exposto foi extraído da excelente apostila **Programação Linear para Fins Florestais**, do professor Julio Eduardo Arce (UFPR). O capítulo que descreve o problema do Poeta pode ser acessado no [repositório do projeto](https://github.com/maykongpedro/PO_O_Problema_Do_Poeta/blob/main/docs/Apostila_PO_Julio_Arce_Cap1_O_Problema_do_Poeta.pdf). Recomendo a leitura, principalmente para aqueles que não tem familiaridade com o tema. Nesse documento o problema será resolvido de maneira simplificada, alocando cada valor e restrição diretamente no código, sem pensar em escalonamento dos dados ou formulação genérica, visando descomplicar alguns conceitos.
 
-Em relação à biblioteca do Pyomo, as práticas utilizadas nesse projeto usam como fonte as boas práticas descritas no livro [Hands-On Mathematical Optimization with Python](https://mobook.github.io/MO-book/intro.html#). Considero esse um dos melhores materias gratuitos disponíveis sobre o tema (infelizmente apenas em inglês).
+Em relação à biblioteca do Pyomo, as práticas utilizadas nesse projeto usam como fonte as boas práticas descritas no livro [Hands-On Mathematical Optimization with Python](https://mobook.github.io/MO-book/intro.html#). Considero esse um dos melhores materiais gratuitos disponíveis sobre o tema (infelizmente apenas em inglês).
 
 De resto, agradeço aos meus colegas e amigos que revisaram o texto, me ajudando com dicas úteis sobre onde detalhar ou sobre onde simplificar algumas coisas.
 
@@ -63,6 +63,10 @@ Todos os valores foram convertidos para a base **hectare por ano (ha·ano)**, fa
 
 ### Parâmetros
 
+::: column-margin
+As seções não utilizadas constam aqui para seguir uma metodologia de organização do modelo. Por opção didática elas foram deixadas de lado. Irei usá-las em outra publicação para ficar claro a diferença entre um modelo que contém elas e outro que não faz esse uso.
+:::
+
 ::: callout-note
 ## Não iremos utilizar essa seção nesse documento visando a simplificação. Será abordada no modelo com escabilidade
 :::
@@ -74,7 +78,7 @@ Como a maximização da receita do Poeta está diretamente ligada ao preço rece
 $$
 \begin{aligned}
 x_1 &:\ \text{número de hectares de floresta de pinus a serem manejados} \\
-x_2 &:\ \text{número de hectares de florestas nativas a serem manejadas}
+x_2 &:\ \text{número de hectares de floresta nativa a serem manejados}
 \end{aligned}
 $$
 
@@ -95,7 +99,7 @@ x_2 &\leq 50 \quad \text{(ha de floresta nativa)}
 \end{aligned}
 $$
 
-Após, precisamos checar no enunciado que há uma restrição de tempo máximo de trabalho por ano. Como calculamos o tempo gasto para cada floresta no tópico de resumo de dados, podemos chegar na seguinte expressão matemática para representar a relação entre tempo de manejo x tempo máximo do poeta: $$
+Após, precisamos checar no enunciado que há uma restrição de tempo máximo de trabalho por ano. Como calculamos o tempo gasto para cada floresta no tópico de resumo de dados, podemos chegar na seguinte expressão matemática para representar a relação entre tempo de manejo *versus* tempo máximo do poeta: $$
 2x_1 + 3x_2 \leq 180
 $$
 
@@ -126,7 +130,7 @@ recurso_max = {"tempo": 180} # <3>
 tempo_por_manejo = {"pinus": 2, "nativa": 3} # <4>
 ```
 
-1.  No Python, temos diversas maneiras de importar e trabalhar com os dados. Para facilitar nosso trabalho com a biblioteca de otimização (*pyomo*), iremos usar uma forma de dados essencial do Python: o **dicionário**. Aqui, o que estamos fazendo é basicamente uma lista que relaciona uma chave (key) x uma informação. A chave `pinus` irá trazer o valor `90`, por exemplo. Podemos acessar ela com o código `receita['pinus']`
+1.  No Python, temos diversas maneiras de importar e trabalhar com os dados. Para facilitar nosso trabalho com a biblioteca de otimização (*pyomo*), iremos usar uma forma de dados essencial do Python: o **dicionário**. Aqui, o que estamos fazendo é basicamente uma lista que relaciona uma chave (key) *versus* uma informação. A chave `pinus` irá trazer o valor `90`, por exemplo. Podemos acessar ela com o código `receita['pinus']`
 2.  Na área máxima, a ideia é a mesma, a *key* (chave) `pinus` irá trazer o valor `40`, ou seja, 40 hectares é a área máxima da floresta de pinus.
 3.  Para o recurso, a *key* `tempo` irá trazer o valor referente aos `180` dias.
 4.  Nosso último dicionário segue a mesma estrutura dos anteriores. Com o código `tempo_por_manejo['pinus']` acessamos o valor de 2 dias por hectare/ano, e usando a chave `nativa`, obtemos os 3 dias por hectare/ano.
@@ -452,7 +456,7 @@ print(f"Área manejada de Nativa (x2) = {modelo.x2_area_nativa.value:.2f} hectar
 3.  Aqui o código `resultado.solver.termination_condition` nos retorna a condição de término do modelo (solução ótima)
 4.  A partir desse item, extraímos diretamente os resultados da otimização,buscando diretamente os valores respectivos aos itens que criamos no modelo: ao acessar `modelo.receita_total` dentro da função `pyo.Value`, obtemos o resultado final da função objetivo. Então usamos o operador `:.2f` apenas para formatar os valores com as casas decimais desejadas
 5.  Para as variáveis, optei por usarmos outra forma de buscar o valor, usando diretamente o método `.value` na variável desejada. Com o código `modelo.x1_area_pinus.value` , temos a área que o modelo decidiu manejar de pinus para alcançar a receita ótima.
-6.  Finalizamos com a mesma estrutura para a variável $x_2$, acessando a área de nativa manejada, e logo após formando as casa decimais.
+6.  Finalizamos com a mesma estrutura para a variável $x_2$, acessando a área de nativa manejada, e logo após formatando as casas decimais.
 
 ## Conclusão
 
@@ -463,6 +467,9 @@ Fico à disposição para sugestões de melhorias, afinal, sempre vai haver algu
 Caso tenha ficado dúvidas, sintam-se à vontade para deixar um comentário que farei o possível para responder.
 
 Até a próxima.
+
+## Reprodutibilidade
+Para conseguir reproduzir esse documento e rodar os códigos com as mesmas versões das bibliotecas utilizadas, acesse o [repositório](https://github.com/maykongpedro/Pesquisa_Operacional_O_Problema_Do_Poeta) específico do projeto.
 
 ## Referências
 
