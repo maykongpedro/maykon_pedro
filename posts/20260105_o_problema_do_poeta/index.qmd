@@ -427,7 +427,7 @@ resultado = SOLVER.solve(  # <1>
 
 ### Exportar resultados
 
-Para acessar resultados brutos do modelo, usamos o método `write`, contudo, essa opção não é muito amigável em termos de praticidade.
+Para acessar resultados brutos do modelo, usamos o método `write`, contudo, essa opção não é muito amigável em termos de praticidade, dificilmente conseguimos extrair uma informação clara desse comando.
 
 ```{python}
 resultado.write
