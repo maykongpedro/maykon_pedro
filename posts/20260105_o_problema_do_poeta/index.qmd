@@ -14,7 +14,6 @@ format:
     code-annotations: below
 ---
 
-
 ## Introdução
 
 Esse texto não tem como pretensão ensinar uma linguagem de programação do zero, tão pouco conceitos básicos de Pesquisa Operacional. A proposta aqui é ser o mais didático possível dentro do universo da PO usando a biblioteca Pyomo do Python, principalmente aplicado às Ciências Florestais, aproveitando todas as possibilidades que o [Quarto](https://quarto.org/) permite na construção de documentos para auxiliar no entendimento do texto.
@@ -212,7 +211,7 @@ modelo = pyo.ConcreteModel() # <1>
 ## Não iremos utilizar essa seção nesse documento visando a simplificação. Será abordada no modelo com escabilidade
 :::
 
-### Variáveis de decisão
+### Variáveis de decisão {#sec-variaveis}
 
 ::: panel-tabset
 ## Opção 1 - Padrão
@@ -298,6 +297,8 @@ def receita_total(m):  # <2>
 :::
 
 ### Declarar restrições
+
+Reiterando o tópico de variávies de decisão (@sec-variaveis), especificamente a **Opção 2 - Com Limites**, caso seguissemos com uma declaração das variáveis usando o argumento `bounds`, não seria necessário a criação das restrições de área máxima, pois as variáveis já possuíriam um limite interno em suas próprias declarações.
 
 #### Área máxima para a floresta de pinus
 
@@ -462,3 +463,10 @@ Fico à disposição para sugestões de melhorias, afinal, sempre vai haver algu
 Caso tenha ficado dúvidas, sintam-se à vontade para deixar um comentário que farei o possível para responder.
 
 Até a próxima.
+
+## Referências
+
+-   [Apostila - Programação Linerar para Fins Florestais (Antiga)](https://github.com/maykongpedro/maykon_pedro/blob/main/posts/20260105_o_problema_do_poeta/docs/Apostila_Programa%C3%A7%C3%A3o_Linear_Julio_Arce.pdf)
+-   [Hands-On Mathematical Optimization with Python](https://mobook.github.io/MO-book/intro.html)
+-   [PEP 318 – Decorators for Functions and Methods](https://peps.python.org/pep-0318/)
+-   [Docs Python - 4.8. Defining Functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions)
