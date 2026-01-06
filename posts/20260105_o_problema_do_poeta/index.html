@@ -244,7 +244,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#resultado" id="toc-resultado" class="nav-link" data-scroll-target="#resultado"><span class="header-section-number">6</span> Resultado</a></li>
   <li><a href="#conclusão" id="toc-conclusão" class="nav-link" data-scroll-target="#conclusão"><span class="header-section-number">7</span> Conclusão</a></li>
-  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">8</span> Referências</a></li>
+  <li><a href="#reprodutibilidade" id="toc-reprodutibilidade" class="nav-link" data-scroll-target="#reprodutibilidade"><span class="header-section-number">8</span> Reprodutibilidade</a></li>
+  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">9</span> Referências</a></li>
   </ul>
 </nav>
 </nav>
@@ -263,8 +264,8 @@ window.Quarto = {
 <h2 data-number="1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">1</span> Introdução</h2>
 <p>Esse texto não tem como pretensão ensinar uma linguagem de programação do zero, tão pouco conceitos básicos de Pesquisa Operacional. A proposta aqui é ser o mais didático possível dentro do universo da PO usando a biblioteca Pyomo do Python, principalmente aplicado às Ciências Florestais, aproveitando todas as possibilidades que o <a href="https://quarto.org/">Quarto</a> permite na construção de documentos para auxiliar no entendimento do texto.</p>
 <p>A ideia surgiu após a constatação de que atualmente não temos nem de perto a quantidade de material sobre Pyomo em Português se compararmos com o idioma dominante na ciência: Inglês. Considerando que pra muitos essa pode ser uma barreira inicial que só tornará a experiência mais difícil, espero que esse material possa agregar na jornada de aprendizado de quem busca entender sobre o assunto. Além disso, o desafio de escrever com minhas palavras na era da inteligência artificial me pareceu extremamente interessante.</p>
-<p>Pensando em conectar com minha área de atuação, o problema aqui exposto foi extraído da excelente apostila <strong>Programação Linear para Fins Florestais</strong>, do professor Julio Eduardo Arce (UFPR). O capítulo que descreve o problema do Poeta pode ser acessado no seguinte link: <a href="https://github.com/maykongpedro/PO_O_Problema_Do_Poeta/blob/main/docs/Apostila_PO_Julio_Arce_Cap1_O_Problema_do_Poeta.pdf">capítulo</a>. Recomendo a leitura, principalmente para aqueles que não tem familiaridade com o tema. Nesse documento o problema será resolvido de maneira simplificada, alocando cada valor e restrição diretamente no código, sem pensar em escalonamento dos dados ou formulação genérica, visando descomplicar alguns conceitos.</p>
-<p>Em relação à biblioteca do Pyomo, as práticas utilizadas nesse projeto usam como fonte as boas práticas descritas no livro <a href="https://mobook.github.io/MO-book/intro.html#">Hands-On Mathematical Optimization with Python</a>. Considero esse um dos melhores materias gratuitos disponíveis sobre o tema (infelizmente apenas em inglês).</p>
+<p>Pensando em conectar com minha área de atuação, o problema aqui exposto foi extraído da excelente apostila <strong>Programação Linear para Fins Florestais</strong>, do professor Julio Eduardo Arce (UFPR). O capítulo que descreve o problema do Poeta pode ser acessado no <a href="https://github.com/maykongpedro/PO_O_Problema_Do_Poeta/blob/main/docs/Apostila_PO_Julio_Arce_Cap1_O_Problema_do_Poeta.pdf">repositório do projeto</a>. Recomendo a leitura, principalmente para aqueles que não tem familiaridade com o tema. Nesse documento o problema será resolvido de maneira simplificada, alocando cada valor e restrição diretamente no código, sem pensar em escalonamento dos dados ou formulação genérica, visando descomplicar alguns conceitos.</p>
+<p>Em relação à biblioteca do Pyomo, as práticas utilizadas nesse projeto usam como fonte as boas práticas descritas no livro <a href="https://mobook.github.io/MO-book/intro.html#">Hands-On Mathematical Optimization with Python</a>. Considero esse um dos melhores materiais gratuitos disponíveis sobre o tema (infelizmente apenas em inglês).</p>
 <p>De resto, agradeço aos meus colegas e amigos que revisaram o texto, me ajudando com dicas úteis sobre onde detalhar ou sobre onde simplificar algumas coisas.</p>
 <p>Aos leitores: sim, esse é um problema simples, e a ideia é justamente focar em <em>como</em> resolver ele usando uma ferramenta poderosa como o Pyomo, porque uma vez compreendido as noções básicas, os problemas resolvidos em Python podem crescer muito além do que um Excel conseguiria resolver. Então, algumas repetições serão propositais visando a consolidação do conhecimento.</p>
 <p>Espero que aproveitem.</p>
@@ -315,7 +316,7 @@ window.Quarto = {
 <li>Tempo máximo de manejo: <strong>180 dias/ano</strong></li>
 </ul>
 </section>
-<section id="formulação" class="level2" data-number="4">
+<section id="formulação" class="level2 page-columns page-full" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="formulação"><span class="header-section-number">4</span> Formulação</h2>
 <section id="índicesconjuntos" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="índicesconjuntos"><span class="header-section-number">4.1</span> Índices/Conjuntos</h3>
@@ -333,9 +334,12 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="parâmetros" class="level3" data-number="4.2">
+<section id="parâmetros" class="level3 page-columns page-full" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="parâmetros"><span class="header-section-number">4.2</span> Parâmetros</h3>
-<div class="callout callout-style-default callout-note callout-empty-content callout-titled">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>As seções não utilizadas constam aqui para seguir uma metodologia de organização do modelo. Por opção didática elas foram deixadas de lado. Irei usá-las em outra publicação para ficar claro a diferença entre um modelo que contém elas e outro que não faz esse uso.</p>
+</div></div><div class="callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -355,7 +359,7 @@ window.Quarto = {
 <p><span class="math display">\[
 \begin{aligned}
 x_1 &amp;:\ \text{número de hectares de floresta de pinus a serem manejados} \\
-x_2 &amp;:\ \text{número de hectares de florestas nativas a serem manejadas}
+x_2 &amp;:\ \text{número de hectares de floresta nativa a serem manejados}
 \end{aligned}
 \]</span></p>
 </section>
@@ -374,7 +378,7 @@ x_1 &amp;\leq 40 \quad \text{(ha de floresta de pinus)} \\
 x_2 &amp;\leq 50 \quad \text{(ha de floresta nativa)}
 \end{aligned}
 \]</span></p>
-<p>Após, precisamos checar no enunciado que há uma restrição de tempo máximo de trabalho por ano. Como calculamos o tempo gasto para cada floresta no tópico de resumo de dados, podemos chegar na seguinte expressão matemática para representar a relação entre tempo de manejo x tempo máximo do poeta: <span class="math display">\[
+<p>Após, precisamos checar no enunciado que há uma restrição de tempo máximo de trabalho por ano. Como calculamos o tempo gasto para cada floresta no tópico de resumo de dados, podemos chegar na seguinte expressão matemática para representar a relação entre tempo de manejo <em>versus</em> tempo máximo do poeta: <span class="math display">\[
 2x_1 + 3x_2 \leq 180
 \]</span></p>
 <p>Para finalizar, devemos definir uma restrição que impeça o modelo de manejar áreas negativas:</p>
@@ -390,7 +394,7 @@ x_2 &amp;\geq 0
 <h2 data-number="5" class="anchored" data-anchor-id="resolução-do-problema"><span class="header-section-number">5</span> Resolução do problema</h2>
 <section id="dados-de-entrada" class="level3 page-columns page-full" data-number="5.1">
 <h3 data-number="5.1" class="anchored" data-anchor-id="dados-de-entrada"><span class="header-section-number">5.1</span> Dados de entrada</h3>
-<div id="a5eab9eb" class="cell" data-execution_count="1">
+<div id="aa6e57bd" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dicionário de receita por tipo de floresta</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a>receita <span class="op">=</span> {<span class="st">"pinus"</span>: <span class="dv">90</span>, <span class="st">"nativa"</span>: <span class="dv">120</span>}</span>
 <span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -406,7 +410,7 @@ x_2 &amp;\geq 0
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="1">No Python, temos diversas maneiras de importar e trabalhar com os dados. Para facilitar nosso trabalho com a biblioteca de otimização (<em>pyomo</em>), iremos usar uma forma de dados essencial do Python: o <strong>dicionário</strong>. Aqui, o que estamos fazendo é basicamente uma lista que relaciona uma chave (key) x uma informação. A chave <code>pinus</code> irá trazer o valor <code>90</code>, por exemplo. Podemos acessar ela com o código <code>receita['pinus']</code></span>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="1">No Python, temos diversas maneiras de importar e trabalhar com os dados. Para facilitar nosso trabalho com a biblioteca de otimização (<em>pyomo</em>), iremos usar uma forma de dados essencial do Python: o <strong>dicionário</strong>. Aqui, o que estamos fazendo é basicamente uma lista que relaciona uma chave (key) <em>versus</em> uma informação. A chave <code>pinus</code> irá trazer o valor <code>90</code>, por exemplo. Podemos acessar ela com o código <code>receita['pinus']</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
@@ -429,7 +433,7 @@ x_2 &amp;\geq 0
 </div></div></section>
 <section id="importar-bibliotecas" class="level3" data-number="5.2">
 <h3 data-number="5.2" class="anchored" data-anchor-id="importar-bibliotecas"><span class="header-section-number">5.2</span> Importar bibliotecas</h3>
-<div id="1f9a019a" class="cell" data-execution_count="2">
+<div id="a1bf99fb" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instalar a biblioteca</span></span>
 <span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pip install pyomo</span></span>
 <span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -453,7 +457,7 @@ x_2 &amp;\geq 0
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Importação direta (HIGHS)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Importação por executável (CBC)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="98b02eb0" class="cell" data-execution_count="3">
+<div id="77b5439e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instalação do solver</span></span>
 <span id="annotated-cell-8-2"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pip install pyomo highspy</span></span>
 <span id="annotated-cell-8-3"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -479,7 +483,7 @@ x_2 &amp;\geq 0
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="9ddb50ca" class="cell" data-execution_count="4">
+<div id="f9d67ecb" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># o executável existe dentro da pasta do projeto</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a>caminho_do_executavel <span class="op">=</span> <span class="st">"solvers/cbc.exe"</span></span>
 <span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>SOLVER <span class="op">=</span> pyo.SolverFactory(</span>
@@ -511,7 +515,7 @@ x_2 &amp;\geq 0
 </section>
 <section id="declarar-modelo" class="level3" data-number="5.4">
 <h3 data-number="5.4" class="anchored" data-anchor-id="declarar-modelo"><span class="header-section-number">5.4</span> Declarar modelo</h3>
-<div id="81633ee1" class="cell" data-execution_count="5">
+<div id="2e6a7209" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>modelo <span class="op">=</span> pyo.ConcreteModel()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
@@ -561,7 +565,7 @@ x_2 &amp;\geq 0
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Opção 1 - Padrão</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Opção 2 - Com Limites</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<div id="e588d6ae" class="cell" data-execution_count="6">
+<div id="36d8701b" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a>modelo.x1_area_pinus <span class="op">=</span> pyo.Var(domain<span class="op">=</span>pyo.NonNegativeReals)</span>
 <span id="annotated-cell-10-2"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a>modelo.x2_area_nativa <span class="op">=</span> pyo.Var(</span>
@@ -588,7 +592,7 @@ x_2 &amp;\geq 0
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>Para esse caso, não precisaríamos criar restrições específicas para a área máxima das florestas, visto que na definição das variáveis já estabeleceríamos um limite para o quanto essa área de manejo pode atingir.</p>
 <p>Não seguiremos com essa opção para poder reforçar a construção das restrições.</p>
-<div id="1c3bd644" class="cell" data-execution_count="7">
+<div id="b91af3b4" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a>modelo.x1_area_pinus <span class="op">=</span> pyo.Var(</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-2" class="code-annotation-target"><a href="#annotated-cell-11-2" aria-hidden="true" tabindex="-1"></a>  bounds<span class="op">=</span> (<span class="dv">0</span>, area_max[<span class="st">'pinus'</span>])</span>
 <span id="annotated-cell-11-3"><a href="#annotated-cell-11-3" aria-hidden="true" tabindex="-1"></a>)</span>
@@ -625,7 +629,7 @@ x_2 &amp;\geq 0
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Opção 1 - Padrão</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Opção 2 - Decorators</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div id="b526234f" class="cell" data-execution_count="8">
+<div id="05af9bc9" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a>modelo.receita_total <span class="op">=</span> pyo.Objective(</span>
 <span id="annotated-cell-12-2"><a href="#annotated-cell-12-2" aria-hidden="true" tabindex="-1"></a>  expr <span class="op">=</span> </span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-12-3" class="code-annotation-target"><a href="#annotated-cell-12-3" aria-hidden="true" tabindex="-1"></a>  receita[<span class="st">'pinus'</span>] <span class="op">*</span> modelo.x1_area_pinus <span class="op">+</span></span>
@@ -655,7 +659,7 @@ x_2 &amp;\geq 0
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div id="cc718483" class="cell" data-execution_count="9">
+<div id="d0623cf3" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1" aria-hidden="true" tabindex="-1"></a><span class="at">@modelo.Objective</span>(sense <span class="op">=</span> pyo.maximize)</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-2" class="code-annotation-target"><a href="#annotated-cell-13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> receita_total(m):</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-13-3" class="code-annotation-target"><a href="#annotated-cell-13-3" aria-hidden="true" tabindex="-1"></a>  receita_pinus <span class="op">=</span> receita[<span class="st">'pinus'</span>] <span class="op">*</span> m.x1_area_pinus</span>
@@ -699,7 +703,7 @@ x_2 &amp;\geq 0
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Opção 1 - Padrão</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Opção 2 - Decorators</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<div id="b5f1158f" class="cell" data-execution_count="10">
+<div id="b1681532" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-1" class="code-annotation-target"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a>modelo.restricao_area_pinus <span class="op">=</span> pyo.Constraint(</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a>  expr<span class="op">=</span>modelo.x1_area_pinus <span class="op">&lt;=</span> area_max[<span class="st">'pinus'</span>]</span>
 <span id="annotated-cell-14-3"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -718,7 +722,7 @@ x_2 &amp;\geq 0
 </div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<div id="41e771db" class="cell" data-execution_count="11">
+<div id="1c37785f" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a><span class="at">@modelo.Constraint</span>()</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> restricao_area_pinus(m):</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> m.x1_area_pinus <span class="op">&lt;=</span> area_max[<span class="st">'pinus'</span>]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -749,7 +753,7 @@ x_2 &amp;\geq 0
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Opção 1 - Padrão</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Opção 2 - Decorators</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
-<div id="015ea770" class="cell" data-execution_count="12">
+<div id="4dd19903" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-1" class="code-annotation-target"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a>modelo.restricao_area_nativa <span class="op">=</span> pyo.Constraint(</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-16-2" class="code-annotation-target"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a>  expr<span class="op">=</span>modelo.x2_area_nativa <span class="op">&lt;=</span> area_max[<span class="st">'nativa'</span>]</span>
 <span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -768,7 +772,7 @@ x_2 &amp;\geq 0
 </div>
 </div>
 <div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
-<div id="a047868c" class="cell" data-execution_count="13">
+<div id="342e53db" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-17-1" class="code-annotation-target"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a><span class="at">@modelo.Constraint</span>()</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> restricao_area_nativa(m):</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> m.x2_area_nativa <span class="op">&lt;=</span> area_max[<span class="st">'nativa'</span>]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -799,7 +803,7 @@ x_2 &amp;\geq 0
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Opção 1 - Padrão</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Opção 2 - Decorators</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
-<div id="4307098d" class="cell" data-execution_count="14">
+<div id="bc5e4c2f" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-18"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-18-1" class="code-annotation-target"><a href="#annotated-cell-18-1" aria-hidden="true" tabindex="-1"></a>modelo.restricao_tempo_disp <span class="op">=</span> pyo.Constraint(</span>
 <span id="annotated-cell-18-2"><a href="#annotated-cell-18-2" aria-hidden="true" tabindex="-1"></a>  expr<span class="op">=</span> </span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-18-3" class="code-annotation-target"><a href="#annotated-cell-18-3" aria-hidden="true" tabindex="-1"></a>  tempo_por_manejo[<span class="st">'pinus'</span>] <span class="op">*</span> modelo.x1_area_pinus <span class="op">+</span></span>
@@ -829,7 +833,7 @@ x_2 &amp;\geq 0
 </div>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
-<div id="680b323d" class="cell" data-execution_count="15">
+<div id="66d74fd5" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-19"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-19-1" class="code-annotation-target"><a href="#annotated-cell-19-1" aria-hidden="true" tabindex="-1"></a><span class="at">@modelo.Constraint</span>()</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-19-2" class="code-annotation-target"><a href="#annotated-cell-19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> restricao_tempo_disp(m):</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-19-3" class="code-annotation-target"><a href="#annotated-cell-19-3" aria-hidden="true" tabindex="-1"></a>  tempo_pinus <span class="op">=</span> tempo_por_manejo[<span class="st">'pinus'</span>] <span class="op">*</span> m.x1_area_pinus</span>
@@ -867,7 +871,7 @@ x_2 &amp;\geq 0
 </section>
 <section id="resolver-modelo" class="level3" data-number="5.10">
 <h3 data-number="5.10" class="anchored" data-anchor-id="resolver-modelo"><span class="header-section-number">5.10</span> Resolver modelo</h3>
-<div id="b9d483a1" class="cell" data-execution_count="16">
+<div id="0deb10b7" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dando uma olhada na construção do modelo</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a>modelo.pprint()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
@@ -890,7 +894,7 @@ x_2 &amp;\geq 0
 <li>Cada restrição e seus respectivos valores, nesse caso, três restrições. Também podemos notar que todas estão ativas (<em>Actives</em>), pois toda restrição tem por padrão esse status depois de criada. Poderíamos desativar alguma das restrições caso fosse interessante fazê-lo, usando o comando: <code>modelo.restricao.deactivate()</code> , um exemplo é a desativação do tempo máximo: <code>modelo.restricao_tempo_disp.deactivate()</code></li>
 <li>Quantidade total de declações realizadas dentro da instância do modelo.</li>
 </ol>
-<div id="bb6b7d2b" class="cell" data-execution_count="17">
+<div id="1d51d42b" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># usando o solver para resolver o modelo</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>resultado <span class="op">=</span> SOLVER.solve(</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>  modelo,</span>
@@ -912,13 +916,40 @@ x_2 &amp;\geq 0
 </dd>
 </dl>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running HiGHS 1.12.0 (git hash: 755a8e0): Copyright (c) 2025 HiGHS under MIT licence terms
+LP has 3 rows; 2 cols; 4 nonzeros
+Coefficient ranges:
+  Matrix  [1e+00, 3e+00]
+  Cost    [9e+01, 1e+02]
+  Bound   [0e+00, 0e+00]
+  RHS     [4e+01, 2e+02]
+Presolving model
+1 rows, 2 cols, 2 nonzeros  0s
+1 rows, 2 cols, 2 nonzeros  0s
+Presolve reductions: rows 1(-2); columns 2(-0); nonzeros 2(-2) 
+Solving the presolved LP
+Using EKK dual simplex solver - serial
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 0s
+          1    -7.6000000000e+03 Pr: 0(0) 0s
+
+Performed postsolve
+Solving the original LP from the solution after postsolve
+
+Model status        : Optimal
+Simplex   iterations: 1
+Objective value     :  7.6000000000e+03
+P-D objective error :  0.0000000000e+00
+HiGHS run time      :          0.01</code></pre>
+</div>
 </div>
 </section>
 <section id="exportar-resultados" class="level3" data-number="5.11">
 <h3 data-number="5.11" class="anchored" data-anchor-id="exportar-resultados"><span class="header-section-number">5.11</span> Exportar resultados</h3>
 <p>Para acessar resultados brutos do modelo, usamos o método <code>write</code>, contudo, essa opção não é muito amigável em termos de praticidade, dificilmente conseguimos extrair uma informação clara desse comando.</p>
-<div id="5a2dbe90" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>resultado.write</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e0aa9ea9" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>resultado.write</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>&lt;bound method SolverResults.write of {'Problem': [{'Lower bound': 7600.0, 'Upper bound': 7600.0, 'Number of objectives': 1, 'Number of constraints': 0, 'Number of variables': 0, 'Sense': 'maximize'}], 'Solver': [{'Status': 'ok', 'Termination condition': 'optimal', 'Termination message': 'TerminationCondition.optimal'}], 'Solution': [OrderedDict({'number of solutions': 0, 'number of solutions displayed': 0})]}&gt;</code></pre>
 </div>
@@ -928,7 +959,7 @@ x_2 &amp;\geq 0
 <section id="resultado" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="resultado"><span class="header-section-number">6</span> Resultado</h2>
 <p>Para acessar de maneira mais direta alguns resultados do modelo, iremos usar métodos específicos para buscarmos os resultados desejados. Combinando isso com a função print, conseguimos gerar um mini-relatório para consumir o resultado da otimização.</p>
-<div id="00f02c2c" class="cell" data-execution_count="19">
+<div id="0bbe1fd4" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># resultados organizados</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">===== RESULTADOS DO MODELO ====="</span>)</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-3" class="code-annotation-target"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Status da otimização: </span><span class="sc">{</span>resultado<span class="sc">.</span>solver<span class="sc">.</span>status<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -960,7 +991,7 @@ x_2 &amp;\geq 0
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="7" data-code-annotation="6">Finalizamos com a mesma estrutura para a variável <span class="math inline">\(x_2\)</span>, acessando a área de nativa manejada, e logo após formando as casa decimais.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="7" data-code-annotation="6">Finalizamos com a mesma estrutura para a variável <span class="math inline">\(x_2\)</span>, acessando a área de nativa manejada, e logo após formatando as casas decimais.</span>
 </dd>
 </dl>
 </div>
@@ -982,8 +1013,12 @@ Receita máxima (z) = R$7600.00
 <p>Caso tenha ficado dúvidas, sintam-se à vontade para deixar um comentário que farei o possível para responder.</p>
 <p>Até a próxima.</p>
 </section>
-<section id="referências" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="referências"><span class="header-section-number">8</span> Referências</h2>
+<section id="reprodutibilidade" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="reprodutibilidade"><span class="header-section-number">8</span> Reprodutibilidade</h2>
+<p>Para conseguir reproduzir esse documento e rodar os códigos com as mesmas versões das bibliotecas utilizadas, acesse o <a href="https://github.com/maykongpedro/Pesquisa_Operacional_O_Problema_Do_Poeta">repositório</a> específico do projeto.</p>
+</section>
+<section id="referências" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="referências"><span class="header-section-number">9</span> Referências</h2>
 <ul>
 <li><a href="https://github.com/maykongpedro/maykon_pedro/blob/main/posts/20260105_o_problema_do_poeta/docs/Apostila_Programa%C3%A7%C3%A3o_Linear_Julio_Arce.pdf">Apostila - Programação Linear para Fins Florestais (Antiga)</a></li>
 <li><a href="https://mobook.github.io/MO-book/intro.html">Hands-On Mathematical Optimization with Python</a></li>
