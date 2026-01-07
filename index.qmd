@@ -43,17 +43,20 @@ Esse blog tem como objetivo saciar minha sede de comunicação e servir de apoio
 
 ## Educação
 
--   **MBA em Data Science & Analytics** – USP/ESALQ\
-    Estatística aplicada, machine learning (aprendizados supervisionado e não supervisionado) , modelagem preditiva, Big Data e análise de dados.
+-   **MBA em Pesquisa Operacional e Tomada de Decisão** – BSB - _Cursando_\
+    Fundamentos da PO, Programação Linear, otimização, métodos de agregação, análises de simulação e tomada de decisão
 
--   **Engenharia Florestal** – UFPR\
+-   **MBA em Data Science & Analytics** – USP/ESALQ - 2022-2024\
+    Estatística aplicada, machine learning (aprendizado supervisionado e não supervisionado), modelagem preditiva e prescritiva, otimização, Big Data e análise de dados.
+
+-   **Engenharia Florestal** – UFPR | 2015 - 2021\
     Ênfase em planejamento, manejo e mensuração florestal, com análise de dados aplicada à previsão por meio de métodos de aprendizado supervisionado
 
 ## Experiências Profissionais
 
--   **Klabin S.A**. - Engenheiro de Planejamento Florestal \| 2020\
+-   **Klabin S.A**. - Engenheiro de Planejamento Florestal \| 2021 - Atual\
     Atuação em planejamento estratégico, otimização, análise de dados e treinamento de colaboradores
 
--   **Tree Wood Products** – Estagiário de Suprimentos \| 2019\
+-   **Tree Wood Products** – Estagiário de Suprimentos \| 2019 - 2020\
     Experiência em logística, embarques internacionais, dados operacionais e análises de processos
 :::
