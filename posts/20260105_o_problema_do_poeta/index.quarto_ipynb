@@ -123,7 +123,7 @@
         "\n",
         "### Dados de entrada\n"
       ],
-      "id": "ca1c130b"
+      "id": "8806cd7b"
     },
     {
       "cell_type": "code",
@@ -141,7 +141,7 @@
         "# dicionário para controle do tempo gasto de manejo por floresta no ano\n",
         "tempo_por_manejo = {\"pinus\": 2, \"nativa\": 3} # <4>"
       ],
-      "id": "c8a8f00d",
+      "id": "e5c39e14",
       "execution_count": null,
       "outputs": []
     },
@@ -160,7 +160,7 @@
         "\n",
         "### Importar bibliotecas\n"
       ],
-      "id": "4e2b4573"
+      "id": "1ae17711"
     },
     {
       "cell_type": "code",
@@ -172,7 +172,7 @@
         "# importar biblioteca\n",
         "import pyomo.environ as pyo # <1>"
       ],
-      "id": "d528cd5e",
+      "id": "29c7712c",
       "execution_count": null,
       "outputs": []
     },
@@ -191,7 +191,7 @@
         "::: panel-tabset\n",
         "#### Importação direta (HIGHS)\n"
       ],
-      "id": "8429da6d"
+      "id": "11aa7b51"
     },
     {
       "cell_type": "code",
@@ -204,7 +204,7 @@
         "SOLVER = pyo.SolverFactory(nome_solver)   # <2>\n",
         "assert SOLVER.available(), f\"Solver {nome_solver} is not available\"  # <3>"
       ],
-      "id": "c2041976",
+      "id": "10af1cd5",
       "execution_count": null,
       "outputs": []
     },
@@ -218,7 +218,7 @@
         "\n",
         "#### Importação por executável (CBC)\n"
       ],
-      "id": "ddb29dac"
+      "id": "e5c08e03"
     },
     {
       "cell_type": "code",
@@ -235,7 +235,7 @@
         "\n",
         "assert SOLVER.available(), f\"Solver {nome_solver} is not available\""
       ],
-      "id": "65fa3234",
+      "id": "4fa5d859",
       "execution_count": null,
       "outputs": []
     },
@@ -250,7 +250,7 @@
         "\n",
         "### Declarar modelo\n"
       ],
-      "id": "242c7e04"
+      "id": "3b2dcaa4"
     },
     {
       "cell_type": "code",
@@ -258,7 +258,7 @@
       "source": [
         "modelo = pyo.ConcreteModel() # <1>"
       ],
-      "id": "fbcab24e",
+      "id": "f7a29e5a",
       "execution_count": null,
       "outputs": []
     },
@@ -285,7 +285,7 @@
         "::: panel-tabset\n",
         "## Opção 1 - Padrão\n"
       ],
-      "id": "a3576569"
+      "id": "88ba908b"
     },
     {
       "cell_type": "code",
@@ -297,7 +297,7 @@
         "  domain=pyo.NonNegativeReals   # <3>\n",
         ") "
       ],
-      "id": "8b34322a",
+      "id": "d10fc5a1",
       "execution_count": null,
       "outputs": []
     },
@@ -315,7 +315,7 @@
         "\n",
         "Não seguiremos com essa opção para poder reforçar a construção das restrições.\n"
       ],
-      "id": "ad7b804e"
+      "id": "25ca18ab"
     },
     {
       "cell_type": "code",
@@ -330,7 +330,7 @@
         "  bounds= (0, area_max['nativa'])  # <2>\n",
         ")"
       ],
-      "id": "1e5b17db",
+      "id": "d7612604",
       "execution_count": null,
       "outputs": []
     },
@@ -355,7 +355,7 @@
         "::: panel-tabset\n",
         "#### Opção 1 - Padrão\n"
       ],
-      "id": "cb74931a"
+      "id": "944a46e3"
     },
     {
       "cell_type": "code",
@@ -368,7 +368,7 @@
         "  sense = pyo.maximize # <4>\n",
         ")"
       ],
-      "id": "30894df8",
+      "id": "0adb4a4b",
       "execution_count": null,
       "outputs": []
     },
@@ -383,7 +383,7 @@
         "\n",
         "#### Opção 2 - Decorators\n"
       ],
-      "id": "71aeb473"
+      "id": "fdff28e9"
     },
     {
       "cell_type": "code",
@@ -396,7 +396,7 @@
         "  receita_nativa = receita['nativa'] * m.x2_area_nativa # <4>\n",
         "  return receita_pinus + receita_nativa  # <5>"
       ],
-      "id": "f881f542",
+      "id": "86355b69",
       "execution_count": null,
       "outputs": []
     },
@@ -420,7 +420,7 @@
         "::: panel-tabset\n",
         "##### Opção 1 - Padrão\n"
       ],
-      "id": "a4f64a12"
+      "id": "60dd91ea"
     },
     {
       "cell_type": "code",
@@ -430,7 +430,7 @@
         "  expr=modelo.x1_area_pinus <= area_max['pinus']  # <2>\n",
         ")"
       ],
-      "id": "aeb00db5",
+      "id": "31f5b5a5",
       "execution_count": null,
       "outputs": []
     },
@@ -443,7 +443,7 @@
         "\n",
         "##### Opção 2 - Decorators\n"
       ],
-      "id": "5ea0a170"
+      "id": "090ac443"
     },
     {
       "cell_type": "code",
@@ -454,7 +454,7 @@
         "def restricao_area_pinus(m):   # <2>\n",
         "  return m.x1_area_pinus <= area_max['pinus']  # <3>"
       ],
-      "id": "e66c9291",
+      "id": "058565a2",
       "execution_count": null,
       "outputs": []
     },
@@ -472,7 +472,7 @@
         "::: panel-tabset\n",
         "##### Opção 1 - Padrão\n"
       ],
-      "id": "11275e7e"
+      "id": "659475f7"
     },
     {
       "cell_type": "code",
@@ -482,7 +482,7 @@
         "  expr=modelo.x2_area_nativa <= area_max['nativa']    # <2>\n",
         ")"
       ],
-      "id": "ee4d132e",
+      "id": "66a3898d",
       "execution_count": null,
       "outputs": []
     },
@@ -495,7 +495,7 @@
         "\n",
         "##### Opção 2 - Decorators\n"
       ],
-      "id": "52441171"
+      "id": "40118ff5"
     },
     {
       "cell_type": "code",
@@ -506,7 +506,7 @@
         "def restricao_area_nativa(m):   # <2>\n",
         "  return m.x2_area_nativa <= area_max['nativa']  # <3>"
       ],
-      "id": "c93da97b",
+      "id": "a53ef4e9",
       "execution_count": null,
       "outputs": []
     },
@@ -524,7 +524,7 @@
         "::: panel-tabset\n",
         "##### Opção 1 - Padrão\n"
       ],
-      "id": "2ee0757e"
+      "id": "e79044e0"
     },
     {
       "cell_type": "code",
@@ -537,7 +537,7 @@
         "  <= recurso_max['tempo']                                     # <4>\n",
         ")\n"
       ],
-      "id": "f2c05897",
+      "id": "b4331fd8",
       "execution_count": null,
       "outputs": []
     },
@@ -552,7 +552,7 @@
         "\n",
         "##### Opção 2 - Decorators\n"
       ],
-      "id": "d2ba2fec"
+      "id": "b7d9052f"
     },
     {
       "cell_type": "code",
@@ -565,7 +565,7 @@
         "  tempo_nativa = tempo_por_manejo['nativa'] * m.x2_area_nativa # <4>\n",
         "  return tempo_pinus + tempo_nativa <= recurso_max['tempo'] # <5> "
       ],
-      "id": "08b464c2",
+      "id": "30f0b699",
       "execution_count": null,
       "outputs": []
     },
@@ -582,7 +582,7 @@
         "\n",
         "### Resolver modelo\n"
       ],
-      "id": "db1157aa"
+      "id": "71866ddd"
     },
     {
       "cell_type": "code",
@@ -592,7 +592,7 @@
         "# dando uma olhada na construção do modelo\n",
         "modelo.pprint() # <1>"
       ],
-      "id": "f65d8cbb",
+      "id": "d9da2b00",
       "execution_count": null,
       "outputs": []
     },
@@ -609,7 +609,7 @@
         "3.  Cada restrição e seus respectivos valores, nesse caso, três restrições. Também podemos notar que todas estão ativas (*Actives*), pois toda restrição tem por padrão esse status depois de criada. Poderíamos desativar alguma das restrições caso fosse interessante fazê-lo, usando o comando: `modelo.restricao.deactivate()` , um exemplo é a desativação do tempo máximo: `modelo.restricao_tempo_disp.deactivate()`\n",
         "4.  Quantidade total de declações realizadas dentro da instância do modelo.\n"
       ],
-      "id": "4553b2ac"
+      "id": "fb955a0d"
     },
     {
       "cell_type": "code",
@@ -621,7 +621,7 @@
         "  tee=True  # <3>\n",
         ")"
       ],
-      "id": "2eb6c606",
+      "id": "cd62c735",
       "execution_count": null,
       "outputs": []
     },
@@ -637,7 +637,7 @@
         "\n",
         "Para acessar resultados brutos do modelo, usamos o método `write`, contudo, essa opção não é muito amigável em termos de praticidade, dificilmente conseguimos extrair uma informação clara desse comando.\n"
       ],
-      "id": "77e071ac"
+      "id": "08e60a9d"
     },
     {
       "cell_type": "code",
@@ -645,7 +645,7 @@
       "source": [
         "resultado.write"
       ],
-      "id": "9aa5042e",
+      "id": "543952bf",
       "execution_count": null,
       "outputs": []
     },
@@ -657,7 +657,7 @@
         "\n",
         "Para acessar de maneira mais direta alguns resultados do modelo, iremos usar métodos específicos para buscarmos os resultados desejados. Combinando isso com a função print, conseguimos gerar um mini-relatório para consumir o resultado da otimização.\n"
       ],
-      "id": "abba0772"
+      "id": "76626fef"
     },
     {
       "cell_type": "code",
@@ -671,7 +671,7 @@
         "print(f\"Área manejada de Pinus (x1) = {modelo.x1_area_pinus.value:.2f} hectares\") # <5>\n",
         "print(f\"Área manejada de Nativa (x2) = {modelo.x2_area_nativa.value:.2f} hectares\") # <6>"
       ],
-      "id": "ee5acaff",
+      "id": "7ba935e5",
       "execution_count": null,
       "outputs": []
     },
@@ -706,7 +706,7 @@
         "-   [PEP 318 – Decorators for Functions and Methods](https://peps.python.org/pep-0318/)\n",
         "-   [Docs Python - 4.8. Defining Functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions)"
       ],
-      "id": "7fd3a4f3"
+      "id": "535f5e52"
     }
   ],
   "metadata": {

@@ -3,7 +3,7 @@ title: Maykon Pedro
 # lang: en
 about:
   template: trestles
-  image: "content/images/about_picture.jpg"
+  image: "content/images/picture.jpg"
   # image-width: "250px;"
   image-shape: round
   image-width: 18em
